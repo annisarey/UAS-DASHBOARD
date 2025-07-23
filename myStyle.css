@@ -1,0 +1,851 @@
+/* Sidebar */
+.main-sidebar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100% !important;
+  overflow-y: auto !important;
+  z-index: 1000; /* Turunkan z-index agar tidak menutupi header */
+  /* padding-bottom: 60px; buat ruang di bawah */
+}
+
+/* Submenu Sidebar */
+.skin-blue .sidebar-menu .treeview-menu > li > a {
+  background-color: #fbd6e3 !important;
+  color: #5c2a41 !important;
+  font-weight: 500;
+  margin: 4px 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.skin-blue .sidebar-menu .treeview-menu > li > a:hover {
+  background-color: #f89cb2 !important;
+  color: white !important;
+}
+
+/* Aktif submenu */
+.skin-blue .sidebar-menu .treeview-menu > li.active > a {
+  background-color: #f6729b !important;
+  color: white !important;
+}
+
+/* Hapus titik biru / garis biru indikator */
+.skin-blue .sidebar-menu > li.active > a {
+  border-left-color: transparent !important;
+}
+
+/* Hover utama sidebar (bukan submenu) */
+.skin-blue .main-sidebar .sidebar .sidebar-menu > li:hover > a {
+  background-color: #f89cb2 !important;
+  color: white !important;
+}
+
+/* Aktif utama sidebar */
+.skin-blue .main-sidebar .sidebar .sidebar-menu > li.active > a {
+  background-color: #f6729b !important;
+  color: white !important;
+}
+
+/*  Header customization  */
+.skin-blue .main-header .navbar {
+  background-color: #d65076 !important; /* pink tua (fanta tone) */
+  position: relative !important;
+  z-index: 1020 !important; /* Pastikan header di atas sidebar */
+}
+
+.skin-blue .main-header .logo {
+  color: #ffffff !important; /* putih terang biar kontras */
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  background-color: #f78fb3 !important; /* Hapus warna biru gelap */
+}
+
+.skin-blue .main-header .logo:hover {
+  background-color: #f8a5c2 !important; /* Konsisten dengan tema pink */
+  color: #ffe6f0 !important;
+}
+
+
+/*  Font & Body  */
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 15px;
+  background-color: #fff0f5;
+  color: #5c2a41;
+}
+
+/*  Header (logo & navbar)  */
+.skin-blue .main-header .logo {
+  background-color: #f78fb3 !important;
+  color: white !important;
+  border-bottom: none !important; /* Hapus garis biru gelap */
+}
+.skin-blue .main-header .logo:hover {
+  background-color: #f8a5c2 !important;
+}
+.skin-blue .main-header .navbar {
+  background-color: #f78fb3 !important;
+  position: relative !important;
+  z-index: 1020 !important; /* Pastikan navbar di atas sidebar */
+}
+
+/* Perbaikan untuk main header */
+.skin-blue .main-header {
+  background-color: #f78fb3 !important;
+  border-bottom: none !important; /* Hapus garis biru gelap */
+  z-index: 1020 !important;
+}
+
+/* Hapus semua warna biru gelap yang tersisa */
+.skin-blue .main-header .logo,
+.skin-blue .main-header .navbar,
+.skin-blue .main-header {
+  background-color: #f78fb3 !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Pastikan header selalu terlihat */
+.skin-blue .main-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1030 !important;
+  height: 51px !important;
+}
+
+/*  Sidebar  */
+.skin-blue .main-sidebar {
+  background-color: #ffe0eb !important;
+}
+.skin-blue .sidebar-menu > li > a {
+  color: #333;
+  font-weight: 500;
+}
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li > a:hover {
+  background-color: #f8a5c2 !important;
+  color: white !important;
+  border-radius: 5px;
+}
+
+/*  Box Output (Beranda)  */
+.box-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 15px;
+}
+.overview-box {
+  flex: 0 0 30%;
+  background: #fff;
+  border: 1px solid #f8a5c2;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 3px 5px rgba(248, 165, 194, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.overview-box:hover {
+  background-color: #ffeaf3;
+  box-shadow: 0px 5px 10px rgba(248, 165, 194, 0.3);
+}
+
+/*  Buttons  */
+.btn, .btn-default {
+  background-color: #f78fb3;
+  color: white;
+  border-radius: 6px;
+  border: none;
+}
+.btn:hover, .btn-default:hover {
+  background-color: #f8a5c2;
+}
+
+/*  Input  */
+select, input[type=text], input[type=number] {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 6px 10px;
+}
+
+/*  Table  */
+.dataTable {
+  background-color: white;
+  border-radius: 8px;
+  cursor: default !important;
+}
+
+/*  Headings  */
+h2, h3 {
+  color: #c44569;
+  font-weight: bold;
+}
+
+/*  Scrollbar halus  */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f8a5c2;
+  border-radius: 4px;
+}
+
+/*  Cards & Tabs  */
+.box {
+  border-top: 3px solid #f78fb3 !important;
+  background: #fff0f5 !important;
+  border-radius: 12px !important;
+}
+
+.tab-pane {
+  padding: 10px 20px;
+}
+
+/* Kategori Box Color */
+.box.box-primary {
+  border-top-color: #ff91b7;
+}
+.box.box-info {
+  border-top-color: #ffb3d1;
+}
+.box.box-warning {
+  border-top-color: #ffc4dd;
+}
+
+/* DataTable header */
+.dataTables_wrapper {
+  overflow-x: auto;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid #ffb6c1;
+  background-color: #fff0f5;
+}
+
+/* Box dengan tema soft pink */
+.softpink-box {
+  background: #fff0f5 !important;
+  border: 1.5px solid #f8a5c2 !important;
+  border-radius: 12px !important;
+  box-shadow: 0px 3px 8px rgba(248, 165, 194, 0.10);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Tombol utama soft pink */
+.btn-softpink, .btn-softpink:active, .btn-softpink:focus {
+  background-color: #f78fb3 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(248, 165, 194, 0.10);
+  transition: background 0.2s;
+}
+.btn-softpink:hover {
+  background-color: #f8a5c2 !important;
+  color: #fff !important;
+}
+
+/* Notifikasi shiny soft pink */
+.shiny-notification {
+  background-color: #ffe0eb !important;
+  color: #5c2a41 !important;
+  border: 1.5px solid #f8a5c2 !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+
+/* TabsetPanel custom untuk tema soft pink */
+.nav-tabs > li > a {
+  color: #5c2a41 !important;
+  font-weight: 600;
+  background: #fff0f5 !important;
+  border: 1.5px solid #f8a5c2 !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0 !important;
+  margin-right: 4px;
+  transition: background 0.2s;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: #d65076 !important;
+  background: #ffe0eb !important;
+  border: 2px solid #f8a5c2 !important;
+  border-bottom: none !important;
+}
+.nav-tabs > li > a:hover {
+  color: #d65076 !important;
+  background: #ffe0eb !important;
+}
+
+/* Sidebar utama dan area scroll sidebar - super spesifik */
+.skin-blue .main-sidebar,
+.skin-blue .main-sidebar .sidebar,
+.skin-blue .main-sidebar .sidebar-menu,
+.skin-blue .main-sidebar .sidebar-menu > li > a,
+.skin-blue .main-sidebar .sidebar-menu .treeview-menu,
+.skin-blue .main-sidebar .sidebar-menu .treeview-menu > li > a,
+.sidebar,
+.sidebar-menu,
+.sidebar-menu > li > a,
+.sidebar-menu .treeview-menu,
+.sidebar-menu .treeview-menu > li > a {
+  background-color: #ffe0eb !important;
+  color: #5c2a41 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Aktif dan hover utama sidebar */
+.skin-blue .main-sidebar .sidebar .sidebar-menu > li.active > a,
+.skin-blue .main-sidebar .sidebar .sidebar-menu > li > a:hover,
+.sidebar-menu > li.active > a,
+.sidebar-menu > li > a:hover {
+  background-color: #f8a5c2 !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* Dropdown (treeview) menu */
+.skin-blue .sidebar-menu .treeview-menu,
+.sidebar-menu .treeview-menu {
+  background: #fbd6e3 !important;
+  border-radius: 0 0 10px 10px !important;
+  box-shadow: none !important;
+}
+.skin-blue .sidebar-menu .treeview-menu > li > a,
+.sidebar-menu .treeview-menu > li > a {
+  color: #5c2a41 !important;
+  background: #fbd6e3 !important;
+}
+.skin-blue .sidebar-menu .treeview-menu > li.active > a,
+.skin-blue .sidebar-menu .treeview-menu > li > a:hover,
+.sidebar-menu .treeview-menu > li.active > a,
+.sidebar-menu .treeview-menu > li > a:hover {
+  background: #f6729b !important;
+  color: #fff !important;
+}
+
+/* Sidebar menu open/expanded */
+.skin-blue .sidebar-menu > li.menu-open > a,
+.sidebar-menu > li.menu-open > a,
+.skin-blue .sidebar-menu > li.active > a,
+.sidebar-menu > li.active > a {
+  background-color: #f8a5c2 !important;
+  color: #fff !important;
+  border-left-color: #f8a5c2 !important;
+}
+
+/* Remove blue border/indicator */
+.skin-blue .sidebar-menu > li.active > a,
+.sidebar-menu > li.active > a {
+  border-left: 5px solid #f8a5c2 !important;
+}
+
+/* Sidebar scrollbar softpink */
+.skin-blue .main-sidebar ::-webkit-scrollbar,
+.sidebar ::-webkit-scrollbar {
+  width: 8px;
+}
+.skin-blue .main-sidebar ::-webkit-scrollbar-thumb,
+.sidebar ::-webkit-scrollbar-thumb {
+  background: #f8a5c2 !important;
+  border-radius: 4px;
+}
+
+/* Background utama halaman */
+.content-wrapper,
+.right-side,
+.content,
+.tab-content,
+.tab-pane {
+  background: #fff0f5 !important;
+  color: #5c2a41 !important;
+  padding-top: 25px !important; /* Berikan ruang untuk header */
+  position: relative;
+  z-index: 1010; /* Di bawah header tapi di atas sidebar */
+}
+
+/* Box dan tab softpink */
+.box,
+.tab-box,
+.nav-tabs-custom,
+.nav-tabs {
+  background: #fff0f5 !important;
+  border: 1.5px solid #f8a5c2 !important;
+  border-radius: 12px !important;
+  box-shadow: 0px 3px 8px rgba(248, 165, 194, 0.10) !important;
+}
+
+/* Judul box */
+.box-header,
+.box-title {
+  background: transparent !important;
+  color: #d65076 !important;
+  border: none !important;
+}
+
+/* Tab aktif dan hover */
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover {
+  background: #ffe0eb !important;
+  color: #d65076 !important;
+  border: 1.5px solid #f8a5c2 !important;
+}
+
+/* Tab konten */
+.tab-content {
+  background: #fff0f5 !important;
+  border-radius: 0 0 12px 12px !important;
+  border: 1.5px solid #f8a5c2 !important;
+  border-top: none !important;
+}
+
+/* Remove blue border on box/tab */
+.box,
+.nav-tabs-custom {
+  border-top: 3px solid #f8a5c2 !important;
+}
+
+/* Hapus double border bawah pada box dan tab */
+.box-header,
+.box-body,
+.box-footer,
+.tab-content,
+.tab-pane,
+.nav-tabs-custom {
+  border-bottom: none !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Pastikan hanya .box yang punya border (jika ingin) */
+.box {
+  border: 1.5px solid #f8a5c2 !important;
+  border-radius: 12px !important;
+  box-shadow: 0px 3px 8px rgba(248, 165, 194, 0.10) !important;
+  border-top: 3px solid #f8a5c2 !important;
+}
+
+/* Hapus border kanan kiri pada box/card dalam */
+.box,
+.softpink-box,
+.overview-box {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.box,
+.softpink-box {
+  padding: 15px !important; /* Memberi jarak aman di sekeliling container */
+}
+
+.shiny-plot-output {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent !important; /* Ubah dari white ke transparent */
+  /* padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Perbaikan tampilan untuk halaman uji statistik */
+.tabsetPanel {
+  margin-top: 20px;
+}
+
+.tabsetPanel .tab-pane {
+  padding: 20px 0;
+}
+
+/* Perbaikan spacing untuk input dan tombol */
+.softpink-box .form-group {
+  margin-bottom: 15px;
+}
+
+.softpink-box .form-control {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.softpink-box .form-control:focus {
+  border-color: #f8a5c2;
+  box-shadow: 0 0 0 0.2rem rgba(248, 165, 194, 0.25);
+}
+
+/* Perbaikan alignment tombol */
+.btn-softpink.btn-block {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-softpink.btn-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(248, 165, 194, 0.3);
+}
+
+/* Perbaikan tampilan hasil uji */
+.softpink-box pre {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Perbaikan tampilan plot */
+.softpink-box .shiny-plot-output {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* padding: 20px;*/
+  margin: 15px 0;
+  background-color: white;
+}
+
+/* Perbaikan tampilan plot untuk halaman yang belum menggunakan softpink-box */
+.shiny-plot-output {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  /* padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Khusus untuk plot di halaman uji normalitas, anova, homogenitas */
+#hist_normal,
+#plot_anova,
+#plot_scatter_homo {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  /*padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Khusus untuk plot di halaman regresi linear berganda */
+#plot_asumsi_regresi {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  /*padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Khusus untuk plot di halaman uji beda rata-rata */
+#plot_rata1,
+#plot_rata2,
+#plot_rata3 {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  /*padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Khusus untuk plot di halaman uji proporsi & varians */
+#plot_prop1,
+#plot_prop2,
+#plot_var1,
+#plot_var2 {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  /*padding: 20px;*/
+  margin: 15px 0;
+  min-height: 400px;
+}
+
+/* Tambahan untuk container plot dengan border dan shadow */
+.shiny-plot-output,
+.softpink-box .shiny-plot-output,
+#hist_normal,
+#plot_anova,
+#plot_scatter_homo,
+#plot_asumsi_regresi,
+#plot_rata1,
+#plot_rata2,
+#plot_rata3,
+#plot_prop1,
+#plot_prop2,
+#plot_var1,
+#plot_var2 {
+  box-shadow: 0 4px 12px rgba(248, 165, 194, 0.3) !important; /* Shadow yang lebih tebal */
+  background-color: transparent !important; /* Background transparan */
+  /* padding: 25px !important; /* Padding yang lebih besar */
+  margin: 20px 0 !important; /* Margin yang lebih besar */
+}
+
+/* Perbaikan tampilan radio buttons */
+.softpink-box .radio-inline {
+  margin-right: 20px;
+}
+
+.softpink-box .radio-inline input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Perbaikan tampilan download buttons */
+.softpink-box .btn-softpink {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Samakan tabBox dengan tabsetPanel: tab lebih clean, tanpa garis biru, border minimal */
+.tabBox .nav-tabs {
+  border: none !important;
+  background: transparent;
+  margin-bottom: 0;
+}
+
+.tabBox .nav-tabs > li {
+  margin-bottom: 0;
+}
+
+.tabBox .nav-tabs > li > a,
+.tabBox .nav-tabs > li.active > a,
+.tabBox .nav-tabs > li > a:focus,
+.tabBox .nav-tabs > li > a:hover {
+  border: 1.5px solid #f8a5c2 !important;
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0 !important;
+  background: white !important;
+  color: #5c2a41 !important;
+  font-weight: 600;
+  margin-right: 4px;
+  margin-top: 0;
+  box-shadow: none !important;
+  padding: 12px 20px;
+}
+
+.tabBox .nav-tabs > li.active > a,
+.tabBox .nav-tabs > li.active > a:focus,
+.tabBox .nav-tabs > li.active > a:hover {
+  background: #ffe0eb !important;
+  color: #d65076 !important;
+  border: 2px solid #f8a5c2 !important;
+  border-bottom: none !important;
+  z-index: 2;
+}
+
+.tabBox .nav-tabs > li > a:hover {
+  background: #ffe0eb !important;
+  color: #d65076 !important;
+}
+
+.tabBox .tab-content {
+  border: none !important;
+  background: transparent;
+  padding-top: 0;
+}
+
+/* Hapus semua pseudo-elements yang mungkin menambahkan garis biru */
+.tabBox .nav-tabs > li > a::after,
+.tabBox .nav-tabs > li.active > a::after,
+.tabBox .nav-tabs > li > a::before,
+.tabBox .nav-tabs > li.active > a::before,
+.tabBox .nav-tabs > li > a:after,
+.tabBox .nav-tabs > li.active > a:after,
+.tabBox .nav-tabs > li > a:before,
+.tabBox .nav-tabs > li.active > a:before {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Hapus border kanan kiri dari konten di dalam tabBox */
+.tabBox .tab-content,
+.tabBox .tab-pane,
+.tabBox .tab-pane.active {
+  border-left: none !important;
+  border-right: none !important;
+  background: transparent !important;
+}
+
+/* Hapus border dari elemen di dalam tab content */
+.tabBox .tab-content .box,
+.tabBox .tab-content .softpink-box,
+.tabBox .tab-content > div {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Perbaikan tampilan box titles */
+.softpink-box .box-header {
+  background-color: #fce4ec;
+  border-bottom: 2px solid #f8a5c2;
+  padding: 15px 20px;
+}
+
+.softpink-box .box-title {
+  color: #c2185b;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Perbaikan spacing antar box */
+.softpink-box {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  /* overflow: hidden; */ /* Hapus/komentar agar dropdown tidak terpotong */
+}
+
+/* Perbaikan tampilan untuk multiple select */
+.softpink-box .selectize-input {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  min-height: 38px;
+}
+
+.softpink-box .selectize-input.focus {
+  border-color: #f8a5c2;
+  box-shadow: 0 0 0 0.2rem rgba(248, 165, 194, 0.25);
+}
+
+.selectize-dropdown,
+.selectize-dropdown.form-control {
+  z-index: 9999 !important;
+}
+
+@media (min-width: 768px) {
+  .eksplorasi-layout {
+    display: flex;
+    gap: 20px;
+  }
+  .eksplorasi-layout .left, .eksplorasi-layout .right {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .eksplorasi-layout {
+    display: block;
+  }
+}
+
+/* Tambahan untuk memastikan plot tidak terpotong */
+.shiny-plot-output,
+.softpink-box .shiny-plot-output,
+#hist_normal,
+#plot_anova,
+#plot_scatter_homo,
+#plot_asumsi_regresi,
+#plot_rata1,
+#plot_rata2,
+#plot_rata3,
+#plot_prop1,
+#plot_prop2,
+#plot_var1,
+#plot_var2 {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
+
+/* Pastikan container plot memiliki ruang yang cukup */
+.box,
+.softpink-box {
+  overflow: visible !important;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/* Tambahan untuk plot di halaman eksplorasi data */
+.eksplorasi-layout .right .shiny-plot-output {
+  margin-right: 0;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* Perbaikan khusus untuk layout eksplorasi data */
+.eksplorasi-layout .right {
+  padding-right: 15px;
+  overflow: visible;
+}
+
+.eksplorasi-layout .left {
+  padding-left: 15px;
+  overflow: visible;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.box, .softpink-box, .tab-pane, .tab-content {
+  overflow-x: visible !important; /* Allow horizontal content to be visible */
+}
+
+.shiny-plot-output, 
+#plot_eksplorasi {
+  width: 100% !important; /* Occupy the full width of the parent */
+  max-width: 100% !important;
+  padding: 0 !important; /* The plot's internal svg handles its own margins */
+  margin: 0 !important;
+}
+
+.content-wrapper, .content {
+    overflow-x: auto !important;
+}
+
+/* Pastikan semua plot memiliki ruang yang cukup */
+.shiny-plot-output svg,
+.shiny-plot-output canvas {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Tambahan untuk memastikan container tidak memotong plot */
+.content-wrapper,
+.main-content {
+  overflow-x: auto;
+  /*padding-right: 20px;*/
+}
+
+/* Perbaikan khusus untuk histogram dan plot di eksplorasi data */
+.eksplorasi-layout .right .box,
+.eksplorasi-layout .right .softpink-box {
+  overflow: visible !important;
+  padding-right: 25px !important;
+  margin-right: 10px;
+}
+
+/* Pastikan plot container memiliki width yang cukup */
+.eksplorasi-layout .right .shiny-plot-output {
+  width: calc(100% - 50px) !important;
+  max-width: none !important;
+}
+
+/* Tambahan untuk memastikan axis labels tidak terpotong */
+.shiny-plot-output .gtitle,
+.shiny-plot-output .gsubtitle,
+.shiny-plot-output .gaxis {
+  overflow: visible !important;
+}

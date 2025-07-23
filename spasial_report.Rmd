@@ -1,0 +1,200 @@
+---
+title: "Laporan Analisis Spasial Kerentanan Sosial Indonesia"
+author: "INUL Dashboard"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+  word_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+params:
+  spatial_var: NULL
+  cluster_var: NULL
+  hotspot_var: NULL
+  spatial_data: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(dplyr)
+library(sf)
+library(RColorBrewer)
+library(classInt)
+library(spdep)
+library(cluster)
+library(factoextra)
+```
+
+# Analisis Spasial Kerentanan Sosial Indonesia
+
+## Ringkasan Eksekutif
+
+Laporan ini menyajikan hasil analisis spasial kerentanan sosial di Indonesia berdasarkan data 511 kabupaten/kota. Analisis ini mencakup visualisasi peta heatmap, analisis cluster wilayah, dan identifikasi hotspot kerentanan sosial.
+
+## Data dan Metodologi
+
+### Sumber Data
+- **Data Kerentanan Sosial**: Survei Sosial Ekonomi Nasional (SUSENAS) 2017
+- **Data Geografis**: Peta administratif Indonesia 2013
+- **Cakupan**: 511 kabupaten/kota di Indonesia
+- **Indikator**: 17 indikator kerentanan sosial
+
+### Metodologi Analisis
+1. **Peta Heatmap**: Visualisasi distribusi spasial indikator kerentanan
+2. **Analisis Cluster**: Pengelompokan wilayah berdasarkan kemiripan karakteristik
+3. **Hotspot Analysis**: Identifikasi wilayah dengan pola spasial signifikan
+
+## Hasil Analisis
+
+### 1. Peta Heatmap Kerentanan Sosial
+
+```{r heatmap, echo=FALSE, fig.width=10, fig.height=8}
+if (!is.null(params$spatial_var) && !is.null(params$spatial_data)) {
+  # Buat peta heatmap
+  data_map <- params$spatial_data %>%
+    select(DISTRICTCODE, geometry, !!sym(params$spatial_var)) %>%
+    filter(!is.na(!!sym(params$spatial_var)))
+  
+  var_values <- data_map[[params$spatial_var]]
+  breaks <- classIntervals(var_values, n = 5, style = "quantile")$brks
+  
+  ggplot(data_map) +
+    geom_sf(aes(fill = !!sym(params$spatial_var)), color = "white", size = 0.1) +
+    scale_fill_distiller(palette = "Reds", direction = 1, 
+                        breaks = breaks, labels = sprintf("%.2f", breaks)) +
+    labs(title = paste("Peta Kerentanan Sosial:", params$spatial_var),
+         subtitle = "Berdasarkan Data 511 Kabupaten/Kota di Indonesia",
+         fill = "Nilai") +
+    theme_minimal() +
+    theme(axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          panel.grid = element_blank(),
+          plot.title = element_text(size = 16, face = "bold"),
+          plot.subtitle = element_text(size = 12),
+          legend.position = "right")
+}
+```
+
+### 2. Analisis Cluster Wilayah
+
+```{r cluster, echo=FALSE, fig.width=10, fig.height=8}
+if (!is.null(params$cluster_var) && !is.null(params$spatial_data)) {
+  # Analisis cluster
+  cluster_data <- params$spatial_data %>%
+    select(DISTRICTCODE, geometry, !!sym(params$cluster_var)) %>%
+    filter(!is.na(!!sym(params$cluster_var))) %>%
+    mutate(standardized_var = scale(!!sym(params$cluster_var))[,1])
+  
+  # K-means clustering
+  set.seed(123)
+  cluster_result <- kmeans(cluster_data$standardized_var, centers = 3)
+  cluster_data$cluster <- as.factor(cluster_result$cluster)
+  
+  ggplot(cluster_data) +
+    geom_sf(aes(fill = cluster), color = "white", size = 0.1) +
+    scale_fill_brewer(palette = "Set3") +
+    labs(title = paste("Cluster Wilayah Berdasarkan", params$cluster_var),
+         subtitle = "Metode: K-means | Jumlah Cluster: 3",
+         fill = "Cluster") +
+    theme_minimal() +
+    theme(axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          panel.grid = element_blank(),
+          plot.title = element_text(size = 16, face = "bold"),
+          plot.subtitle = element_text(size = 12),
+          legend.position = "right")
+}
+```
+
+### 3. Analisis Hotspot
+
+```{r hotspot, echo=FALSE, fig.width=10, fig.height=8}
+if (!is.null(params$hotspot_var) && !is.null(params$spatial_data)) {
+  # Analisis hotspot
+  hotspot_data <- params$spatial_data %>%
+    select(DISTRICTCODE, geometry, !!sym(params$hotspot_var)) %>%
+    filter(!is.na(!!sym(params$hotspot_var)))
+  
+  # Buat weight matrix
+  nb <- poly2nb(hotspot_data)
+  w <- nb2listw(nb, style = "W")
+  
+  # Local Moran's I
+  local_moran <- localmoran(hotspot_data[[params$hotspot_var]], w)
+  hotspot_data$hotspot_score <- local_moran[, "Ii"]
+  hotspot_data$p_value <- local_moran[, "Pr(z != E(Ii))"]
+  
+  # Kategorikan hotspot
+  hotspot_data <- hotspot_data %>%
+    mutate(hotspot_type = case_when(
+      hotspot_score > 0 & p_value < 0.05 ~ "High-High",
+      hotspot_score < 0 & p_value < 0.05 ~ "Low-Low",
+      TRUE ~ "Not Significant"
+    ))
+  
+  ggplot(hotspot_data) +
+    geom_sf(aes(fill = hotspot_type), color = "white", size = 0.1) +
+    scale_fill_manual(values = c("High-High" = "#d73027", "Low-Low" = "#4575b4", "Not Significant" = "#f7f7f7")) +
+    labs(title = paste("Hotspot Analysis:", params$hotspot_var),
+         subtitle = "Metode: Local Moran's I | Threshold: 0.05",
+         fill = "Tipe Hotspot") +
+    theme_minimal() +
+    theme(axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          panel.grid = element_blank(),
+          plot.title = element_text(size = 16, face = "bold"),
+          plot.subtitle = element_text(size = 12),
+          legend.position = "right")
+}
+```
+
+## Statistik Deskriptif
+
+```{r stats, echo=FALSE}
+if (!is.null(params$spatial_data)) {
+  # Statistik untuk semua variabel numerik
+  numeric_vars <- names(params$spatial_data)[sapply(params$spatial_data, is.numeric)]
+  numeric_vars <- numeric_vars[!numeric_vars %in% c("DISTRICTCODE", "POPULATION")]
+  
+  stats_summary <- params$spatial_data %>%
+    select(all_of(numeric_vars)) %>%
+    summarise(across(everything(), list(
+      mean = ~mean(., na.rm = TRUE),
+      sd = ~sd(., na.rm = TRUE),
+      min = ~min(., na.rm = TRUE),
+      max = ~max(., na.rm = TRUE),
+      median = ~median(., na.rm = TRUE)
+    ))) %>%
+    pivot_longer(everything(), names_to = c("variable", "stat"), names_sep = "_") %>%
+    pivot_wider(names_from = stat, values_from = value)
+  
+  knitr::kable(stats_summary, digits = 3, 
+               caption = "Statistik Deskriptif Indikator Kerentanan Sosial")
+}
+```
+
+## Kesimpulan dan Rekomendasi
+
+### Temuan Utama
+1. **Variasi Spasial**: Terdapat variasi geografis yang signifikan dalam tingkat kerentanan sosial di Indonesia
+2. **Cluster Wilayah**: Wilayah dengan karakteristik kerentanan serupa cenderung berkelompok secara geografis
+3. **Hotspot Kerentanan**: Teridentifikasi beberapa wilayah dengan tingkat kerentanan tinggi yang berdekatan
+
+### Rekomendasi Kebijakan
+1. **Targeted Intervention**: Fokuskan intervensi pada wilayah dengan cluster kerentanan tinggi
+2. **Regional Cooperation**: Dorong kerjasama antar wilayah dalam mengatasi kerentanan sosial
+3. **Monitoring Spasial**: Lakukan pemantauan berkelanjutan terhadap pola spasial kerentanan
+
+### Implikasi Praktis
+- Analisis spasial membantu mengidentifikasi prioritas wilayah untuk intervensi
+- Pemahaman pola cluster memungkinkan pendekatan yang lebih efektif dalam penanganan kerentanan
+- Hotspot analysis memberikan insight untuk perencanaan pembangunan regional
+
+---
+
+*Laporan ini dibuat secara otomatis oleh INUL Dashboard pada `r format(Sys.time(), '%d %B %Y pukul %H:%M:%S')`* 
