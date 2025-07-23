@@ -29,7 +29,6 @@
   color: white !important;
 }
 
-/* Hapus titik biru / garis biru indikator */
 .skin-blue .sidebar-menu > li.active > a {
   border-left-color: transparent !important;
 }
@@ -46,7 +45,6 @@
   color: white !important;
 }
 
-/*  Header customization  */
 .skin-blue .main-header .navbar {
   background-color: #d65076 !important; 
   position: relative !important;
@@ -65,7 +63,6 @@
   background-color: #f8a5c2 !important; 
   color: #ffe6f0 !important;
 }
-
 
 /*  Font & Body  */
 body {
@@ -90,7 +87,6 @@ body {
   z-index: 1020 !important; 
 }
 
-/* Perbaikan untuk main header */
 .skin-blue .main-header {
   background-color: #f78fb3 !important;
   border-bottom: none !important; 
@@ -184,7 +180,6 @@ h2, h3 {
   font-weight: bold;
 }
 
-/*  Scrollbar halus  */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -204,7 +199,6 @@ h2, h3 {
   padding: 10px 20px;
 }
 
-/* Kategori Box Color */
 .box.box-primary {
   border-top-color: #ff91b7;
 }
@@ -335,7 +329,6 @@ h2, h3 {
   border-left-color: #f8a5c2 !important;
 }
 
-/* Remove blue border/indicator */
 .skin-blue .sidebar-menu > li.active > a,
 .sidebar-menu > li.active > a {
   border-left: 5px solid #f8a5c2 !important;
@@ -398,7 +391,6 @@ h2, h3 {
   border-top: none !important;
 }
 
-/* Remove blue border on box/tab */
 .box,
 .nav-tabs-custom {
   border-top: 3px solid #f8a5c2 !important;
@@ -493,7 +485,7 @@ h2, h3 {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* padding: 20px;*/
+
   margin: 15px 0;
   background-color: white;
 }
@@ -503,7 +495,7 @@ h2, h3 {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
-  /* padding: 20px;*/
+
   margin: 15px 0;
   min-height: 400px;
 }
@@ -515,7 +507,6 @@ h2, h3 {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
-  /*padding: 20px;*/
   margin: 15px 0;
   min-height: 400px;
 }
@@ -525,7 +516,6 @@ h2, h3 {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
-  /*padding: 20px;*/
   margin: 15px 0;
   min-height: 400px;
 }
@@ -537,7 +527,6 @@ h2, h3 {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
-  /*padding: 20px;*/
   margin: 15px 0;
   min-height: 400px;
 }
@@ -568,12 +557,10 @@ h2, h3 {
 #plot_var1,
 #plot_var2 {
   box-shadow: 0 4px 12px rgba(248, 165, 194, 0.3) !important; 
-  background-color: transparent !important; /* Background transparan */
-  /* padding: 25px !important; /* Padding yang lebih besar */
-  margin: 20px 0 !important; /* Margin yang lebih besar */
+  background-color: transparent !important; 
+  margin: 20px 0 !important; 
 }
 
-/* Perbaikan tampilan radio buttons */
 .softpink-box .radio-inline {
   margin-right: 20px;
 }
@@ -582,13 +569,11 @@ h2, h3 {
   margin-right: 5px;
 }
 
-/* Perbaikan tampilan download buttons */
 .softpink-box .btn-softpink {
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
-/* Samakan tabBox dengan tabsetPanel: tab lebih clean, tanpa garis biru, border minimal */
 .tabBox .nav-tabs {
   border: none !important;
   background: transparent;
@@ -636,7 +621,6 @@ h2, h3 {
   padding-top: 0;
 }
 
-/* Hapus semua pseudo-elements yang mungkin menambahkan garis biru */
 .tabBox .nav-tabs > li > a::after,
 .tabBox .nav-tabs > li.active > a::after,
 .tabBox .nav-tabs > li > a::before,
@@ -653,7 +637,6 @@ h2, h3 {
   outline: none !important;
 }
 
-/* Hapus border kanan kiri dari konten di dalam tabBox */
 .tabBox .tab-content,
 .tabBox .tab-pane,
 .tabBox .tab-pane.active {
@@ -662,7 +645,6 @@ h2, h3 {
   background: transparent !important;
 }
 
-/* Hapus border dari elemen di dalam tab content */
 .tabBox .tab-content .box,
 .tabBox .tab-content .softpink-box,
 .tabBox .tab-content > div {
@@ -670,7 +652,6 @@ h2, h3 {
   border-right: none !important;
 }
 
-/* Perbaikan tampilan box titles */
 .softpink-box .box-header {
   background-color: #fce4ec;
   border-bottom: 2px solid #f8a5c2;
@@ -683,14 +664,11 @@ h2, h3 {
   font-size: 16px;
 }
 
-/* Perbaikan spacing antar box */
 .softpink-box {
   margin-bottom: 20px;
   border-radius: 10px;
-  /* overflow: hidden; */ /* Hapus/komentar agar dropdown tidak terpotong */
 }
 
-/* Perbaikan tampilan untuk multiple select */
 .softpink-box .selectize-input {
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -723,7 +701,6 @@ h2, h3 {
   }
 }
 
-/* Tambahan untuk memastikan plot tidak terpotong */
 .shiny-plot-output,
 .softpink-box .shiny-plot-output,
 #hist_normal,
@@ -742,7 +719,6 @@ h2, h3 {
   box-sizing: border-box;
 }
 
-/* Pastikan container plot memiliki ruang yang cukup */
 .box,
 .softpink-box {
   overflow: visible !important;
@@ -750,7 +726,6 @@ h2, h3 {
   padding-left: 20px;
 }
 
-/* Tambahan untuk plot di halaman eksplorasi data */
 .eksplorasi-layout .right .shiny-plot-output {
   margin-right: 0;
   padding-right: 30px;
@@ -759,7 +734,6 @@ h2, h3 {
   padding-bottom: 25px;
 }
 
-/* Perbaikan khusus untuk layout eksplorasi data */
 .eksplorasi-layout .right {
   padding-right: 15px;
   overflow: visible;
@@ -775,14 +749,14 @@ h2, h3 {
 }
 
 .box, .softpink-box, .tab-pane, .tab-content {
-  overflow-x: visible !important; /* Allow horizontal content to be visible */
+  overflow-x: visible !important; 
 }
 
 .shiny-plot-output, 
 #plot_eksplorasi {
-  width: 100% !important; /* Occupy the full width of the parent */
+  width: 100% !important; 
   max-width: 100% !important;
-  padding: 0 !important; /* The plot's internal svg handles its own margins */
+  padding: 0 !important;
   margin: 0 !important;
 }
 
@@ -790,21 +764,17 @@ h2, h3 {
     overflow-x: auto !important;
 }
 
-/* Pastikan semua plot memiliki ruang yang cukup */
 .shiny-plot-output svg,
 .shiny-plot-output canvas {
   max-width: 100% !important;
   height: auto !important;
 }
 
-/* Tambahan untuk memastikan container tidak memotong plot */
 .content-wrapper,
 .main-content {
   overflow-x: auto;
-  /*padding-right: 20px;*/
 }
 
-/* Perbaikan khusus untuk histogram dan plot di eksplorasi data */
 .eksplorasi-layout .right .box,
 .eksplorasi-layout .right .softpink-box {
   overflow: visible !important;
@@ -812,13 +782,11 @@ h2, h3 {
   margin-right: 10px;
 }
 
-/* Pastikan plot container memiliki width yang cukup */
 .eksplorasi-layout .right .shiny-plot-output {
   width: calc(100% - 50px) !important;
   max-width: none !important;
 }
 
-/* Tambahan untuk memastikan axis labels tidak terpotong */
 .shiny-plot-output .gtitle,
 .shiny-plot-output .gsubtitle,
 .shiny-plot-output .gaxis {
